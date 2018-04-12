@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lista 4 piotr wolski</title>
+    </head>
+    <body>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="http://github.com/piotrwolski1000">Piotr Wolski's github page</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            <a href="https://www.w3schools.com">Visit W3Schools.com!</a></br>
+            
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            <img src="http://placehold.it/15x15" alt="err"></br>
+            
+
+
+
+            <div id ="result">
+                Script didn't loaded properly.
+            </div>
+
+            <script>
+                task1_2 = () => {
+            
+                    let a = document.getElementsByTagName('a');
+                    
+                    document.write("Ilosc znacznikow a: ", a.length, "</br>");// task a)
+                    
+                    let myTagsInfoList = [];
+                    let smallList = [];
+
+                    for(let i = 0;i<=a.length -1;i++) {
+                        smallList.push([a[i].href, a[i].innerHTML]);
+                        myTagsInfoList.push(smallList[i]);     
+                        // document.write("href: ", a[i].href, " innerHTML: ", a[i].innerHTML, "</br>");
+                    }
+
+                    //task b)
+                    console.log(myTagsInfoList);
+                    document.getElementById('result').innerHTML = myTagsInfoList;
+                }
+                
+                task3 = () => {
+                    let img = document.getElementsByTagName('img');
+
+                    let mySrcImgs = [];
+
+                    for(let i =0;i <= img.length -1;i++) {
+                        mySrcImgs.push(img[i].src ," </br>");
+                    }
+                    return mySrcImgs;
+                }
+                    
+
+
+                task1_2();
+                document.write(task3());
+            </script>
+
+        
+    </body>
+</html>

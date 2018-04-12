@@ -1,0 +1,21 @@
+{
+  "name": "zad6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "express-static": "^1.2.5",
+    "express-stormpath": "^4.0.0",
+    "socket.io": "^1.7.1"
+  }
+}

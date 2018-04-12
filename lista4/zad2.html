@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lista 4 piotr wolski</title>
+    </head>
+    <body>
+        
+        <form>
+            <!-- <input id = "a" name="a" onchange="onchange1()"> +
+            <input id = "b" name="b" onchange="onchange2()"> =
+             -->
+            <input id = "a" name="a" onkeyup="onchange1()"> +
+            <input id = "b" name="b" onkeyup="onchange2()"> =
+            
+            
+            <input id = "c" name="c">
+        </form>
+    
+        <script>
+           var a = 0;
+           var b = 0;
+
+            onchange1 = () => {
+                a = parseInt(document.getElementById('a').value);//because typeof(document.getElementById('a').value) => 'string'
+                if(document.getElementById('a').value != undefined && document.getElementById('b').value != undefined)
+                    document.getElementById('c').value = eval("a + b");
+            }
+
+            onchange2 = () => {
+                b = parseInt(document.getElementById('b').value);
+                if(document.getElementById('b').value && document.getElementById('c').value)
+                    document.getElementById('c').value = eval("a + b");
+                
+            }
+
+        </script>
+
+        
+    </body>
+</html>

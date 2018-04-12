@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>calc</title>
+    </head>
+    <body>
+        
+        <form>
+            <input id = "b1" name= "a" onkeyup="onchange1()"> +
+            <input id = "b2" name="b" onkeyup="onchange2()"> =
+            <input id = "b3" name= "a" onkeyup="onchange1()"> +
+            
+            <input id = "b4" name="b" onkeyup="onchange2()"> =
+            <input id = "b5" name="b" onkeyup="onchange2()"> =
+            <input id = "b6" name="b" onkeyup="onchange2()"> =
+            
+            
+            <input id = "c" name="c">
+            
+
+
+        </form>
+    
+        <script>
+           var a = 0;
+           var b = 0;
+
+            onchange1 = () => {
+                a = parseInt(document.getElementById('a').value);//because typeof(document.getElementById('a').value) => 'string'
+                if(document.getElementById('a').value != undefined && document.getElementById('b').value != undefined)
+                    document.getElementById('c').value = eval("a + b");
+            }
+
+            onchange2 = () => {
+                b = parseInt(document.getElementById('b').value);
+                if(document.getElementById('b').value && document.getElementById('c').value)
+                    document.getElementById('c').value = eval("a + b");
+                
+            }
+
+        </script>
+
+        
+    </body>
+</html>

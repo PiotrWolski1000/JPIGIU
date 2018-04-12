@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lista 4 piotr wolski</title>
+    </head>
+    <body>
+        
+        <form style="background-color:orange; padding: 50px; display: block; float:left;" >
+            <select id = 'mySelector' onchange="addParamChanged()">
+                <option value="Point">Point</option>
+                <option value="Circle">Circle</option>
+                <option value="Rectangle">Rectangle</option>
+                <option value="Polygon">Polygon</option>
+            </select>
+            <span id "x"><br>x:<br><input type="text" name="x value"><br></span>
+            <span id ="y">y:<br><input type="text" name="y value"><br></span>
+            <span id ="a"  style= "display:none" >a:<br><input type="text" name="a side length"><br></span>
+            <span id ="b"  style= "display:none" >b:<br><input type="text" name="b side length"><br></span>
+            <span id ="r"  style= "display:none" >r:<br><input type="text" name="radius length"><br></span>
+            <span id ="color" >Color:<br><input type="text" name="radius length"><br></span>
+            <br><button type="button" onclick="addElement()">Add element to canvas</button>
+
+        </form>
+
+        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;display:block; float:right;"></canvas>
+
+        <script>
+
+            var fig = [
+            {name:"Point",x:[1],y:[3], color: ["purple"]},
+            {name:"Circle",x:[200],y:[140],r:[15],color:["green"]},
+            {name:"Rectangle",x:[100],y:[200],a:[50],b:[200],color:["red"]},
+            {name:"Polygon",x:[5,19,30,45,78],y:[5,21,15,29,37],color:["pink"]},
+            ];
+        
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            var canvas = {
+                width: 500,
+                height: 500
+            }
+
+            function addParamChanged(){
+                let mySelector = document.getElementById('mySelector')
+                //reset to default
+                document.getElementById('a').style.display = "inline";
+                document.getElementById('b').style.display = "inline";
+                document.getElementById('r').style.display = "inline";
+                
+                switch(mySelector.value) {
+                    case "Point": 
+                        document.getElementById('a').style.display = "none";
+                        document.getElementById('b').style.display = "none";
+                        document.getElementById('r').style.display = "none";
+                        break;
+                    case "Circle":             
+                        document.getElementById('a').style.display = "none";
+                        document.getElementById('b').style.display = "none";
+                        break;    
+                    case "Rectangle": 
+                        document.getElementById('r').style.display = "none";
+                        break;
+                    case "Polygon":
+                        document.getElementById('r').style.display = "none";
+                        document.getElementById('a').style.display = "none";
+                        document.getElementById('b').style.display = "none";
+                        break;    
+                    default:
+                        break;
+                }
+            }
+            
+            function addElement(){
+                let mySelector = document.getElementById('mySelector')
+                let myInputs = document.getElementsByTagName("input")
+                let x = myInputs[0]
+                let y = myInputs[1]
+                let a = myInputs[2]
+                let b = myInputs[3]
+                let r = myInputs[4]
+                let color = myInputs[5]
+                switch(mySelector.value){
+                    case "Point":
+                        fig[0].x.push(x.value)
+                        fig[0].y.push(y.value)
+                        fig[0].color.push(color.value)
+                        break;
+                    case "Circle":
+                            fig[1].x.push(x.value)
+                            fig[1].y.push(y.value)
+                            fig[1].r.push(r.value)
+                            fig[1].color.push(color.value)
+                            break                               
+                    case "Rectangle":
+                        fig[2].x.push(x.value)
+                        fig[2].y.push(y.value)
+                        fig[2].a.push(a.value)
+                        fig[2].b.push(b.value)
+                        fig[2].color.push(color.value)
+                        break;
+                    case "Polygon":
+                        fig[3].x.push(x.value)
+                        fig[3].y.push(y.value)
+                        fig[3].color.push(color.value)
+                        break
+                    default: 
+                        break
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                draw()
+            }
+
+            function draw(){
+                
+                for(let i = 0;i<fig.length;i++) {
+                    switch(fig[i].name) {
+                        case "Circle":
+                            for(let j = 0;j<fig[i].x.length;j++) {
+                                ctx.beginPath()
+                                ctx.arc(fig[i].x[j], fig[i].y[j], fig[i].r[j], 0, 2 * Math.PI)
+                                ctx.fillStyle = fig[i].color[j]
+                                ctx.fill()
+                            }
+                            break
+                        case "Rectangle":
+                            for(let j = 0;j<fig[i].x.length;j++) {
+                                ctx.beginPath()
+                                ctx.rect(fig[i].x[j], fig[i].y[j], fig[i].a[j], fig[i].b[j])
+                                ctx.fillStyle = fig[i].color[j]
+                                ctx.fill();
+                            }
+                            break
+                        
+                        case "Point":                     
+                            for(let j = 0;j<fig[i].x.length;j++) {
+                                ctx.beginPath()
+                                ctx.arc(fig[i].x[j], fig[i].y[j], 1, 0, 2*Math.PI)
+                                ctx.fillStyle = fig[i].color[j]
+                                ctx.fill()
+                            }
+                            break
+
+                        case "Polygon":
+                            ctx.beginPath()    
+                            
+                            ctx.moveTo(fig[i].x[0], fig[i].y[0]);
+                            
+                            for(let j = 0;j<fig[i].x.length-1;j++) {
+                                ctx.lineTo(fig[i].x[j+1], fig[i].y[j+1]);       
+                            }
+
+                            ctx.stroke();
+
+                        default: 
+                            break; 
+                    }
+                }
+            }
+
+            draw();
+        </script>        
+    </body>
+</html>
