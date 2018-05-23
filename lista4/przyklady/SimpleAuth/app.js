@@ -29,16 +29,18 @@ app.get( '/login', (req, res) => {
 app.post( '/login', (req, res) => {
     var username = req.body.txtUser;
     var pwd = req.body.txtPwd;
-
-    if ( username == pwd ) {
+    //connect to db eg. mysql http://npmjs.com/package/mysql
+    /*if ( username == pwd ) {
         // wydanie ciastka
         res.cookie('user', username);
         // przekierowanie
         var returnUrl = req.query.returnUrl;
         res.redirect(returnUrl);
     } else {
-        res.render( 'login', { message : "Zła nazwa logowania lub hasło" } );
+        res.render( 'login', { message: "Zła nazwa logowania lub hasło" } );
     }
+    */
+    res.render('index'. { message: "Welcome, " + username})
 });
 
 // middleware autentykacji
